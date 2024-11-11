@@ -1,0 +1,57 @@
+ caduser.php
+     <script>
+	$(document).ready(function(){
+		//$("#frmLogin").hide();
+		$("#frmLembrarSenha").hide();
+		$("#frmCadUser").hide();
+
+		$("#btnSendLogin").click(function(){
+			alert("Enviar Via Ajax para o login.php");
+		});
+		$("#btnLembrarSenha").click(function(){
+			$("#frmLogin").hide();
+			$("#frmLembrarSenha").show();
+			$("#frmCadUser").hide();
+		})
+		$("#btnCadUser").click(function(){
+			$("#frmLogin").hide();
+			$("#frmLembrarSenha").hide();
+			$("#frmCadUser").show();	
+		})
+
+
+		$("#btnEnviarLembrar").click(function(){
+			alert("Enviar Via Ajax para o lembrarSenha.php");
+
+		})
+		$("#btnSendCadastro").click(function(){
+			$.ajax({
+				type: 'POST',
+				url: 'caduser.php', 
+				data: $("frmCadUser").serialize(), 
+				success: function(response) {
+					console.log(response);
+					$("#divxyz").html(response);
+					alert('Cadastro realizado com sucesso!');
+				},
+				error: function(response) {
+					console.log(response);
+					alert('Erro ao enviar o formulário.');
+				}
+			});
+			
+			alert("Enviar Via Ajax para o cadUSer.php");
+		})
+		
+		$("#btnCancelar").click(function(){
+			$("#frmLogin").show();
+			$("#frmLembrarSenha").hide();
+			$("#frmCadUser").hide();	
+		})
+		$("#btnCancelarLembrar").click(function(){
+			$("#frmLogin").show();
+			$("#frmLembrarSenha").hide();
+			$("#frmCadUser").hide();	
+		})
+	});
+</script>
